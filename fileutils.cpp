@@ -9,7 +9,6 @@ FileUtils::FileUtils() {}
 
 QVector<QString> FileUtils::readFile()
 {
-    std::cout << PATH.toStdString() << std::endl;
     QFile file(PATH);
     if(!file.open(QIODevice::ReadOnly)) {
         QMessageBox::information(0, "error", file.errorString());

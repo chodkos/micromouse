@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    std::cout<< " before set lefts " <<  std::endl;
     QGraphicsScene * scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
 
