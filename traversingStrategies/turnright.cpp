@@ -10,7 +10,7 @@ bool TurnRight::traverse()
     std::cout << "maze curren y :   "<< maze->getCurrentY()  << std::endl;
     std::cout << "previous X :   "<< maze->getCurrentTile()->getPreviousX()  << std::endl;
     std::cout << "previous Y :   "<< maze->getCurrentTile()->getPreviousY()  << std::endl;
-    if(maze->getCurrentX() == 4 && maze->getCurrentY() == 2) {
+    if(maze->getCurrentX() == maze->getCenterColumn() && maze->getCurrentY() == maze->getCenterRow()) {
         return false;
     }
 

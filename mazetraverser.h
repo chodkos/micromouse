@@ -3,11 +3,9 @@
 
 #include "maze.h"
 #include "micromouse.h"
-#include "traversingstrategy.h"
 
 #include <QObject>
 
-#include <traversingStrategies/leftfirststrategy.h>
 #include <traversingStrategies/turnleftstrategy.h>
 #include <traversingStrategies/turnright.h>
 
@@ -25,6 +23,7 @@ private:
     TurnLeftStrategy * turnLeftStrat;
     TurnRight * turnRightStrat;
     int strategy = 1;
+
 public:
     explicit MazeTraverser(QObject *parent = nullptr);
     void setMaze(Maze* _maze);
@@ -32,13 +31,16 @@ public:
     void stopTraversing();
     void setMicromouse(Micromouse* _micromouse);
     Micromouse getMicromouse();
+
+    //zaczyna ruch robota do czasu osiagniecia punktu koncowego lub wywolania stopTraversing()
     void startTraversing();
+
+    //zwieksza licznik ruchow
     void incrementMovesCount();
     int getMovesCount();
 
-    LeftFirstStrategy * getLeftFirstStrategy();
-
     void setTurnLeftStrategy(TurnLeftStrategy * _turnLeftStrat);
+
     TurnLeftStrategy * prepareTurnLeftStrategy();
 
     void setTurnRightStrategy(TurnRight * _turnRightStrat);
@@ -46,6 +48,7 @@ public:
 
     void setStrategy(int _st);
     int getStrategy();
+
 public slots:
     void moveMicromouse();
 };

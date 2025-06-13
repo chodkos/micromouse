@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 
+
 Maze::Maze() {}
 
 int Maze::getColumns()
@@ -27,6 +28,12 @@ void Maze::createMaze(QVector<QString> data)
 
     for (int i = 0; i < data.size(); ++i) {
         QStringList row = data[i].split(" ");
+        /*!
+         * kazdy rzad w pliku ma 6 cyfr
+         * 2 pierwsze to wspolrzedne kafelka
+         * 4 kolejne to cyfry wskazujace na obecnos sciany w danym kierunku
+         * przykladowo: 3 2 1 0 0 0 - na kafelku o wspolrzednych x = 3, y = 2 jest tylko scianka na gorze
+         */
         Tile * tile = &map[row[0].toInt()][row[1].toInt()];
         tile->createWalls(row[2] == '1', row[3] == '1', row[4] == '1', row[5] == '1');
     }
@@ -71,17 +78,6 @@ void Maze::updateCurrentTile(Tile tile)
     mapTap[currentX][currentY] = tile;
 }
 
-
-
-
-
-Tile Maze::getCurr()
-{
-    return mapTap[currentX][currentY];
-}
-
-
-
 void Maze::isNotOnStartingTile()
 {
     isOnStaringTile = false;
@@ -91,3 +87,14 @@ bool Maze::getIsOnStartingTile()
 {
     return isOnStaringTile;
 }
+
+int Maze::getCenterColumn()
+{
+    return centerColumn;
+}
+
+int Maze::getCenterRow()
+{
+    return centerRow;
+}
+

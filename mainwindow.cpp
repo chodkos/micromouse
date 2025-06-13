@@ -14,7 +14,6 @@
 
 #include <QPushButton>
 
-#include <traversingStrategies/leftfirststrategy.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,6 +41,10 @@ MainWindow::MainWindow(QWidget *parent)
     Maze *maze = new Maze();
     maze->createMaze(data);
 
+    TurnLeftStrategy turnLeftStrategy;
+    turnLeftStrategy.setMaze(maze);
+    turnLeftStrategy.setMicromouse(micromouse);
+
     mazeTraverser->setMicromouse(micromouse);
     mazeTraverser->setMaze(maze);
 
@@ -58,7 +61,6 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
-    //QGraphicsView * view = new QGraphicsView(this);
     ui->graphicsView->show();
 }
 

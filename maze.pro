@@ -19,7 +19,6 @@ SOURCES += \
     painter.cpp \
     properties.cpp \
     tile.cpp \
-    traversingStrategies/leftfirststrategy.cpp \
     traversingStrategies/turnleftstrategy.cpp \
     traversingStrategies/turnright.cpp \
     traversingstrategy.cpp
@@ -34,7 +33,6 @@ HEADERS += \
     painter.h \
     properties.h \
     tile.h \
-    traversingStrategies/leftfirststrategy.h \
     traversingStrategies/turnleftstrategy.h \
     traversingStrategies/turnright.h \
     traversingstrategy.h

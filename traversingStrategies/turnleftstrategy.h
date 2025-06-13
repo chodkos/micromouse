@@ -5,6 +5,7 @@
 
 class TurnLeftStrategy : public TraversingStrategy
 {
+    Q_OBJECT
 public:
     TurnLeftStrategy();
     bool traverse();

@@ -5,12 +5,13 @@
 #include "micromouse.h"
 
 
-class TraversingStrategy
+class TraversingStrategy: public QObject
 {
+    Q_OBJECT
 public:
-    bool traverse();
+    virtual bool traverse() = 0;
     void setMaze(Maze* _maze);
-    void setMicromouse(Micromouse &_micromouse);
+    void setMicromouse(Micromouse* _micromouse);
 protected:
     Maze *maze;
     Micromouse *micromouse;

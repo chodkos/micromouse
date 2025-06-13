@@ -2,8 +2,7 @@
 
 #include <qtimer.h>
 
-#include <traversingStrategies/leftfirststrategy.h>
-
+#include <iostream>
 MazeTraverser::MazeTraverser(QObject *parent): QObject{parent}
 {
 
@@ -54,7 +53,7 @@ void MazeTraverser::setTurnLeftStrategy(TurnLeftStrategy *_turnLeftStrat)
 TurnLeftStrategy *MazeTraverser::prepareTurnLeftStrategy()
 {
     turnLeftStrat->setMaze(maze);
-    turnLeftStrat->setMicromouse(*micromouse);
+    turnLeftStrat->setMicromouse(micromouse);
     return turnLeftStrat;
 }
 
@@ -66,7 +65,7 @@ void MazeTraverser::setTurnRightStrategy(TurnRight *_turnRightStrat)
 TurnRight *MazeTraverser::prepareTurnRightStrategy()
 {
     turnRightStrat->setMaze(maze);
-    turnRightStrat->setMicromouse(*micromouse);
+    turnRightStrat->setMicromouse(micromouse);
     return turnRightStrat;
 }
 
@@ -81,14 +80,14 @@ int MazeTraverser::getStrategy()
 }
 
 
-
 void MazeTraverser::moveMicromouse()
 {
+
     if(getStrategy() == 1) {
         TurnLeftStrategy turnLeft;
         turnLeftStrat = &turnLeft;
         turnLeftStrat->setMaze(maze);
-        turnLeftStrat->setMicromouse(*micromouse);
+        turnLeftStrat->setMicromouse(micromouse);
 
         if(!turnLeftStrat->traverse()) {
             stopTraversing();
@@ -98,12 +97,14 @@ void MazeTraverser::moveMicromouse()
         TurnRight turnRight;
         turnRightStrat = &turnRight;
         turnRightStrat->setMaze(maze);
-        turnRightStrat->setMicromouse(*micromouse);
+        turnRightStrat->setMicromouse(micromouse);
 
         if(!turnRightStrat->traverse()) {
             stopTraversing();
             return;
         }
     }
+
+
     incrementMovesCount();
 }

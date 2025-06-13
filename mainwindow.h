@@ -27,10 +27,13 @@ private slots:
 
     void on_pushButton_clicked();
 
+    //zaczyna poruszanie sie robota
     void on_pushButton_toggled(bool checked);
 
+    //ustawia strategie poruszania sie na turnLeft
     void on_pushButton_2_toggled(bool checked);
 
+    //ustawia strategie poruszania sie na turnRight
     void on_pushButton_3_toggled(bool checked);
 
     void on_resetButton_clicked();

@@ -2,6 +2,7 @@
 #define DIRECTION_H
 /*!
  * \brief The Direction enum
+ * Klasa reprezentujaca kierunek, uzywana np. do przemieszczania "micromouse"
  */
 enum class Direction {
     NORTH,
