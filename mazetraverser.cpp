@@ -13,9 +13,9 @@ void MazeTraverser::setMaze(Maze* _maze)
     maze = _maze;
 }
 
-Maze MazeTraverser::getMaze()
+Maze * MazeTraverser::getMaze()
 {
-    return *maze;
+    return maze;
 }
 
 void MazeTraverser::stopTraversing()
@@ -26,6 +26,11 @@ void MazeTraverser::stopTraversing()
 void MazeTraverser::setMicromouse(Micromouse* _micromouse)
 {
     micromouse = _micromouse;
+}
+
+Micromouse *MazeTraverser::getMicromouse()
+{
+    return micromouse;
 }
 
 void MazeTraverser::startTraversing()
@@ -45,51 +50,38 @@ int MazeTraverser::getMovesCount()
     return movesCount;
 }
 
-void MazeTraverser::setTurnLeftStrategy(TurnLeftStrategy *_turnLeftStrat)
+void MazeTraverser::setTraversingStrategy(TraversingStrategy *_traversingStrategy)
 {
-    turnLeftStrat = _turnLeftStrat;
+    traversingStrategy = _traversingStrategy;
 }
 
-TurnLeftStrategy *MazeTraverser::prepareTurnLeftStrategy()
+TraversingStrategy *MazeTraverser::getTraversingStrategy()
 {
-    turnLeftStrat->setMaze(maze);
-    turnLeftStrat->setMicromouse(micromouse);
-    return turnLeftStrat;
-}
-
-void MazeTraverser::setTurnRightStrategy(TurnRight *_turnRightStrat)
-{
-    turnRightStrat = _turnRightStrat;
-}
-
-TurnRight *MazeTraverser::prepareTurnRightStrategy()
-{
-    turnRightStrat->setMaze(maze);
-    turnRightStrat->setMicromouse(micromouse);
-    return turnRightStrat;
-}
-
-void MazeTraverser::setStrategy(int _st)
-{
-    strategy = _st;
-}
-
-int MazeTraverser::getStrategy()
-{
-    return strategy;
+    return traversingStrategy;
 }
 
 
 void MazeTraverser::moveMicromouse()
 {
 
-    if(getStrategy() == 1) {
-        TurnLeftStrategy turnLeft;
-        turnLeftStrat = &turnLeft;
-        turnLeftStrat->setMaze(maze);
-        turnLeftStrat->setMicromouse(micromouse);
+    if(!getTraversingStrategy()->traverse()) {
+        stopTraversing();
+        return;
+    }
+    incrementMovesCount();
+    /*if(getTraversingStrategy() == nullptr) {
+        TurnLeftStrategy *turnLeft = new TurnLeftStrategy();
+        //turnLeftStrat = &turnLeft;
+        turnLeft->setMaze(maze);
+        turnLeft->setMicromouse(micromouse);
+        setTraversingStrategy(turnLeft);
+    }
 
-        if(!turnLeftStrat->traverse()) {
+    if(getStrategy() == 1) {
+        //TurnLeftStrategy turnLeft;
+        std::cout<< "nowa strategia" <<std::endl;
+
+        if(!getTraversingStrategy()->traverse()) {
             stopTraversing();
             return;
         }
@@ -99,12 +91,12 @@ void MazeTraverser::moveMicromouse()
         turnRightStrat->setMaze(maze);
         turnRightStrat->setMicromouse(micromouse);
 
-        if(!turnRightStrat->traverse()) {
+        if(!getTraversingStrategy()->traverse()) {
             stopTraversing();
             return;
         }
     }
 
+ */
 
-    incrementMovesCount();
 }

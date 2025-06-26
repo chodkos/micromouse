@@ -5,6 +5,8 @@ TurnRight::TurnRight() {}
 
 bool TurnRight::traverse()
 {
+
+    std::cout<< " left nowa strategia" <<std::endl;
     Tile * currentTile = maze->getCurrentTile();
     if(maze->getCurrentX() == maze->getCenterColumn() && maze->getCurrentY() == maze->getCenterRow()) {
         return false;

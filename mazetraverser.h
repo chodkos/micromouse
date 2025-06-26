@@ -19,18 +19,15 @@ private:
     int movesCount = 0;
 
     QMetaObject::Connection connection;
-
-    TurnLeftStrategy * turnLeftStrat;
-    TurnRight * turnRightStrat;
-    int strategy = 1;
+    TraversingStrategy * traversingStrategy;
 
 public:
     explicit MazeTraverser(QObject *parent = nullptr);
     void setMaze(Maze* _maze);
-    Maze getMaze();
+    Maze * getMaze();
     void stopTraversing();
     void setMicromouse(Micromouse* _micromouse);
-    Micromouse getMicromouse();
+    Micromouse * getMicromouse();
 
     //zaczyna ruch robota do czasu osiagniecia punktu koncowego lub wywolania stopTraversing()
     void startTraversing();
@@ -39,15 +36,8 @@ public:
     void incrementMovesCount();
     int getMovesCount();
 
-    void setTurnLeftStrategy(TurnLeftStrategy * _turnLeftStrat);
-
-    TurnLeftStrategy * prepareTurnLeftStrategy();
-
-    void setTurnRightStrategy(TurnRight * _turnRightStrat);
-    TurnRight * prepareTurnRightStrategy();
-
-    void setStrategy(int _st);
-    int getStrategy();
+    void setTraversingStrategy(TraversingStrategy * _traversingStrategy);
+    TraversingStrategy * getTraversingStrategy();
 
 public slots:
     void moveMicromouse();

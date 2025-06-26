@@ -4,7 +4,7 @@ TurnLeftStrategy::TurnLeftStrategy() {}
 
 bool TurnLeftStrategy::traverse()
 {
-
+     std::cout<< " left nowa strategia" <<std::endl;
 
     Tile * currentTile = maze->getCurrentTile();
 

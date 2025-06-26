@@ -40,13 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
     Maze *maze = new Maze();
     maze->createMaze(data);
 
-    TurnLeftStrategy turnLeftStrategy;
-    turnLeftStrategy.setMaze(maze);
-    turnLeftStrategy.setMicromouse(micromouse);
-
     mazeTraverser->setMicromouse(micromouse);
     mazeTraverser->setMaze(maze);
 
+    ui->pushButton->setEnabled(false);
 
 
     Painter painter;
@@ -121,18 +118,29 @@ void MainWindow::on_pushButton_toggled(bool checked)
 
 void MainWindow::on_pushButton_2_toggled(bool checked)
 {
-    mazeTraverser->setStrategy(1);
+    delete mazeTraverser->getTraversingStrategy();
+    TurnLeftStrategy *turnLeft = new TurnLeftStrategy();
+    //turnLeftStrat = &turnLeft;
+    turnLeft->setMaze(mazeTraverser->getMaze());
+    turnLeft->setMicromouse(mazeTraverser->getMicromouse());
+    mazeTraverser->setTraversingStrategy(turnLeft);
+    ui->pushButton->setEnabled(true);
 }
 
 
 void MainWindow::on_pushButton_3_toggled(bool checked)
 {
-    mazeTraverser->setStrategy(2);
+    delete mazeTraverser->getTraversingStrategy();
+    TurnRight * turnRight = new TurnRight();
+    turnRight->setMaze(mazeTraverser->getMaze());
+    turnRight->setMicromouse(mazeTraverser->getMicromouse());
+    mazeTraverser->setTraversingStrategy(turnRight);
+    ui->pushButton->setEnabled(true);
 }
 
 
-void MainWindow::on_resetButton_clicked()
-{
-    reset();
-}
+//void MainWindow::on_resetButton_clicked()
+//{
+//    reset();
+//}
 

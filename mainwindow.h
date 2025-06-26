@@ -36,7 +36,7 @@ private slots:
     //ustawia strategie poruszania sie na turnRight
     void on_pushButton_3_toggled(bool checked);
 
-    void on_resetButton_clicked();
+    //void on_resetButton_clicked();
 
 private:
     Ui::MainWindow *ui;
