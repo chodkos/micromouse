@@ -2,7 +2,6 @@
 
 #include <qtimer.h>
 
-#include <iostream>
 MazeTraverser::MazeTraverser(QObject *parent): QObject{parent}
 {
 
@@ -63,40 +62,9 @@ TraversingStrategy *MazeTraverser::getTraversingStrategy()
 
 void MazeTraverser::moveMicromouse()
 {
-
     if(!getTraversingStrategy()->traverse()) {
         stopTraversing();
         return;
     }
     incrementMovesCount();
-    /*if(getTraversingStrategy() == nullptr) {
-        TurnLeftStrategy *turnLeft = new TurnLeftStrategy();
-        //turnLeftStrat = &turnLeft;
-        turnLeft->setMaze(maze);
-        turnLeft->setMicromouse(micromouse);
-        setTraversingStrategy(turnLeft);
-    }
-
-    if(getStrategy() == 1) {
-        //TurnLeftStrategy turnLeft;
-        std::cout<< "nowa strategia" <<std::endl;
-
-        if(!getTraversingStrategy()->traverse()) {
-            stopTraversing();
-            return;
-        }
-    } else if(getStrategy() == 2) {
-        TurnRight turnRight;
-        turnRightStrat = &turnRight;
-        turnRightStrat->setMaze(maze);
-        turnRightStrat->setMicromouse(micromouse);
-
-        if(!getTraversingStrategy()->traverse()) {
-            stopTraversing();
-            return;
-        }
-    }
-
- */
-
 }
